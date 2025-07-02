@@ -848,83 +848,6 @@ section:last-of-type {
   font-style: italic;
 }
 
-/* Tutorials Section */
-.tutorials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 30px;
-}
-
-.tutorial-card {
-  background: var(--secondary-bg);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid var(--border-color);
-  display: flex;
-  flex-direction: column;
-}
-
-.tutorial-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(58, 134, 255, 0.2);
-}
-
-.tutorial-card .video-container {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-  height: 0;
-  overflow: hidden;
-}
-
-.tutorial-card .video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-.tutorial-content {
-  padding: 25px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.tutorial-content h3 {
-  color: var(--highlight-secondary);
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-}
-
-.tutorial-content .tutorial-description {
-  font-size: 1rem;
-  margin-bottom: 15px;
-  color: var(--text-secondary);
-  flex-grow: 1;
-}
-
-.tutorial-links a {
-  color: var(--highlight-secondary);
-  text-decoration: none;
-  margin-right: 20px;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.tutorial-links a i {
-  margin-right: 6px;
-}
-
-.tutorial-links a:hover {
-  color: var(--accent-color);
-  text-decoration: underline;
-}
-
 /* Contact Section */
 #contact .contact-intro {
   text-align: center;
@@ -1187,28 +1110,57 @@ footer p {
     font-size: 1.4rem;
   }
 
-  #hero .greeting {
-    font-size: 1.3rem;
+  .nav-controls-wrapper {
+    width: auto;
+    margin-left: auto;
+  }
+  header nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--secondary-bg);
+    padding: 15px 0;
+    border-top: 1px solid var(--border-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  header nav.active {
+    display: flex;
+  }
+  header nav ul {
+    flex-direction: column;
+    width: 100%;
+  }
+  header nav ul li {
+    display: block;
+    text-align: center;
+    margin: 10px 0;
+    margin-left: 0;
+  }
+  header nav ul li a {
+    font-size: 16px; /* Restore font size for mobile menu */
+  }
+  .custom-language-switcher {
+    margin-left: 0;
+    margin-top: 15px;
+    width: auto;
+    min-width: 150px;
+  }
+  .menu-toggle {
+    display: block;
+    order: 1;
   }
 
-  .profile-photo {
-    max-width: 200px;
+  #about .about-content {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .projects-grid,
-  .certificates-grid,
-  .services-grid,
-  .tutorials-grid {
-    /* Added services-grid and tutorials-grid */
-    grid-template-columns: 1fr;
-  }
-
-  .project-card .project-image-container {
-    height: 200px;
+  #about .about-image-container {
+    margin-bottom: 30px;
   }
 
   .review-video-container iframe {
@@ -1318,6 +1270,10 @@ footer p {
   .selected-lang-display {
     padding: 5px 8px;
   }
+  .selected-lang-display .flag-icon {
+    width: 18px;
+    margin-right: 5px;
+  }
   .selected-lang-text,
   .lang-options-list li {
     font-size: 0.85rem;
@@ -1333,1189 +1289,74 @@ footer p {
   }
 }
 
+
 /* FAQ Section Styles */
 #faq .faq-accordion {
-  max-width: 800px;
-  margin: 0 auto;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .faq-item {
-  background: var(--secondary-bg);
-  margin-bottom: 10px;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  overflow: hidden; /* Ensures answer doesn't overflow rounded corners */
-}
-
-.faq-question {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 18px 25px;
-  background: transparent; /* Inherit from faq-item */
-  border: none;
-  color: var(--text-primary);
-  font-size: 1.15rem;
-  font-weight: 600;
-  text-align: left;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.faq-question:hover,
-.faq-question:focus {
-  background-color: rgba(255, 255, 255, 0.05); /* Subtle hover */
-  outline: none;
-}
-
-.faq-question .faq-arrow {
-  font-size: 1rem;
-  transition: transform 0.3s ease-in-out;
-  color: var(--highlight-secondary);
-}
-
-.faq-question[aria-expanded="true"] .faq-arrow {
-  transform: rotate(180deg);
-}
-
-.faq-answer {
-  padding: 0 25px 20px 25px; /* Top padding handled by button, add bottom */
-  color: var(--text-secondary);
-  font-size: 1rem;
-  line-height: 1.7;
-  border-top: 1px solid var(--border-color); /* Separator line */
-  /* CSS transition for smooth opening/closing (optional but nice) */
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease-out, padding-top 0.4s ease-out,
-    padding-bottom 0.4s ease-out;
-}
-
-.faq-answer p {
-  margin-bottom: 0; /* Remove default p margin if any */
-}
-
-/* Style for when answer is visible (JS will handle display:block or similar) */
-/* We'll use max-height for transition */
-.faq-item.open .faq-answer {
-  /* display: block; /* Replaced by max-height for transition */
-  max-height: 500px; /* Adjust if answers are very long */
-  /* padding-top: 20px; /* Added by JS or direct style */
-  /* padding-bottom: 20px; /* Added by JS or direct style */
-}
-
-/* Tutorials Section */
-.tutorials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 30px;
-}
-
-.tutorial-card {
-  background: var(--secondary-bg);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid var(--border-color);
-  display: flex;
-  flex-direction: column;
-}
-
-.tutorial-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(58, 134, 255, 0.2);
-}
-
-.tutorial-card .video-container {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-  height: 0;
-  overflow: hidden;
-}
-
-.tutorial-card .video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-.tutorial-content {
-  padding: 25px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.tutorial-content h3 {
-  color: var(--highlight-secondary);
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-}
-
-.tutorial-content .tutorial-description {
-  font-size: 1rem;
-  margin-bottom: 15px;
-  color: var(--text-secondary);
-  flex-grow: 1;
-}
-
-.tutorial-links a {
-  color: var(--highlight-secondary);
-  text-decoration: none;
-  margin-right: 20px;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.tutorial-links a i {
-  margin-right: 6px;
-}
-
-.tutorial-links a:hover {
-  color: var(--accent-color);
-  text-decoration: underline;
-}
-
-/* Contact Section */
-#contact .contact-intro {
-  text-align: center;
-  font-size: 1.15rem;
-  color: var(--text-secondary);
-  margin-bottom: 40px;
-  max-width: 750px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.contact-methods {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-  margin-bottom: 40px;
-}
-
-.contact-method {
-  background: var(--secondary-bg);
-  padding: 25px 30px;
-  border-radius: 10px;
-  text-align: center;
-  min-width: 220px;
-  border: 1px solid var(--border-color);
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.contact-method:hover {
-  background-color: #233456;
-  transform: translateY(-5px);
-}
-
-.contact-method i {
-  font-size: 2.2rem;
-  color: var(--accent-color);
-  margin-bottom: 15px;
-}
-
-.contact-method a {
-  color: var(--text-primary);
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 500;
-  display: block;
-}
-
-.contact-method a:hover {
-  color: var(--highlight-secondary);
-}
-
-/* Call to Action Button Styling (General) */
-.cta-button {
-  display: inline-block;
-  background: var(--accent-color);
-  color: #fff;
-  padding: 14px 35px;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease,
-    box-shadow 0.3s ease;
-  border: 2px solid var(--accent-color);
-  box-shadow: 0 4px 15px rgba(58, 134, 255, 0.3);
-}
-
-.cta-button:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
-  color: #fff;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 166, 251, 0.4);
-}
-
-.center-cta {
-  text-align: center;
-  margin-top: 40px;
-}
-
-.secondary-cta {
-  background: transparent;
-  border: 2px solid var(--highlight-secondary);
-  color: var(--highlight-secondary);
-}
-.secondary-cta i {
-  margin-right: 8px;
-}
-
-.secondary-cta:hover {
-  background: var(--highlight-secondary);
-  color: var(--primary-bg);
-  border-color: var(--highlight-secondary);
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 40px 20px;
-  background: var(--secondary-bg);
-  color: var(--text-secondary);
-  margin-top: 30px;
-  border-top: 3px solid var(--accent-color);
-}
-
-footer p {
-  margin-bottom: 10px;
-  font-size: 1rem;
-}
-
-.social-links-footer a {
-  color: var(--text-secondary);
-  margin: 0 12px;
-  font-size: 1.8rem;
-  transition: color 0.3s ease, transform 0.3s ease;
-  display: inline-block;
-}
-
-.social-links-footer a:hover {
-  color: var(--highlight-secondary);
-  transform: translateY(-3px);
-}
-
-/* WhatsApp Fixed Button */
-@keyframes pulseWhatsApp {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-  }
-  50% {
-    transform: scale(1.08);
-    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-  }
-}
-
-.whatsapp-fab {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background-color: #25d366;
-  color: white;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  z-index: 1001;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  animation: pulseWhatsApp 2.5s infinite ease-in-out;
-}
-
-.whatsapp-fab:hover {
-  background-color: #1dae54;
-  transform: scale(1.1);
-  animation-play-state: paused;
-}
-
-/* Certificate Modal Styles */
-.certificate-image-clickable {
-  cursor: pointer;
-}
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 2000;
-  padding-top: 50px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.9);
-}
-.modal-content {
-  margin: auto;
-  display: block;
-  width: 90%;
-  max-width: 800px;
-  max-height: 85vh;
-  object-fit: contain;
-  animation-name: zoomModal;
-  animation-duration: 0.5s;
-}
-#caption {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
-  color: #ccc;
-  padding: 10px 0;
-  height: 5vh;
-}
-
-.close-modal-btn {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  transition: 0.3s;
-  cursor: pointer;
-}
-.close-modal-btn:hover,
-.close-modal-btn:focus {
-  color: #bbb;
-  text-decoration: none;
-}
-@keyframes zoomModal {
-  from {
-    transform: scale(0.1);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  /* Adjusted breakpoint for nav items */
-  header nav ul li {
-    margin-left: 15px;
-  }
-  header nav ul li a {
-    font-size: 14px;
-  }
-  .custom-language-switcher {
-    margin-left: 20px;
-  }
-}
-
-@media (max-width: 992px) {
-  .hero-flex-container {
-    flex-direction: column-reverse;
-    text-align: center;
-  }
-  .hero-buttons {
-    justify-content: center;
-  }
-
-  #hero .profile-photo {
-    margin: 0 auto 30px auto;
-    max-width: 250px;
-  }
-
-  #hero h1 {
-    font-size: 2.8rem;
-  }
-
-  #hero .subtitle {
-    font-size: 1.4rem;
-  }
-
-  #hero .greeting {
-    font-size: 1.3rem;
-  }
-
-  .profile-photo {
-    max-width: 200px;
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .projects-grid,
-  .certificates-grid,
-  .services-grid,
-  .tutorials-grid {
-    /* Added services-grid and tutorials-grid */
-    grid-template-columns: 1fr;
-  }
-
-  .project-card .project-image-container {
-    height: 200px;
-  }
-
-  .review-video-container iframe {
-    height: 320px;
-  }
-  .fiverr-reviews-slider {
-    max-width: 95%;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    width: 95%;
-  }
-
-  header #branding h1 {
-    font-size: 22px;
-  }
-
-  #hero h1 {
-    font-size: 2.4rem;
-  }
-
-  #hero .subtitle {
-    font-size: 1.2rem;
-  }
-
-  #hero .greeting {
-    font-size: 1.3rem;
-  }
-
-  .profile-photo {
-    max-width: 200px;
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .projects-grid,
-  .certificates-grid,
-  .services-grid {
-    /* Added services-grid */
-    grid-template-columns: 1fr;
-  }
-
-  .project-card .project-image-container {
-    height: 200px;
-  }
-
-  .review-video-container iframe {
-    height: 250px;
-  }
-  .modal-content {
-    width: 95%;
-  }
-  .slider-controls button {
-    padding: 8px 12px;
-    font-size: 0.9rem;
-  }
-  .fiverr-review-slide .review-text-fiverr {
-    font-size: 0.95rem;
-  }
-  .hero-cta {
-    padding: 10px 25px;
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  #hero h1 {
-    font-size: 2rem;
-  }
-  .hero-buttons .hero-cta {
-    width: 100%;
+    background: var(--secondary-bg);
     margin-bottom: 10px;
-  }
-  .hero-buttons .hero-cta:last-child {
-    margin-bottom: 0;
-  }
-
-  #hero .subtitle {
-    font-size: 1.1rem;
-  }
-
-  .cta-button {
-    font-size: 1rem;
-    padding: 12px 25px;
-  }
-
-  .whatsapp-fab {
-    width: 50px;
-    height: 50px;
-    font-size: 1.6rem;
-    bottom: 20px;
-    right: 20px;
-  }
-  .contact-method {
-    min-width: 100%;
-  }
-  header #branding h1 {
-    font-size: 20px;
-  }
-  .custom-language-switcher {
-    min-width: 120px;
-  }
-  .selected-lang-display {
-    padding: 5px 8px;
-  }
-  .selected-lang-text,
-  .lang-options-list li {
-    font-size: 0.85rem;
-  }
-  .service-card h3 {
-    font-size: 1.4rem;
-  }
-  .service-card i.service-icon {
-    font-size: 3rem;
-    width: 70px;
-    height: 70px;
-    line-height: 50px;
-  }
-}
-
-/* FAQ Section Styles */
-#faq .faq-accordion {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.faq-item {
-  background: var(--secondary-bg);
-  margin-bottom: 10px;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  overflow: hidden; /* Ensures answer doesn't overflow rounded corners */
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    overflow: hidden; /* Ensures answer doesn't overflow rounded corners */
 }
 
 .faq-question {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 18px 25px;
-  background: transparent; /* Inherit from faq-item */
-  border: none;
-  color: var(--text-primary);
-  font-size: 1.15rem;
-  font-weight: 600;
-  text-align: left;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.faq-question:hover,
-.faq-question:focus {
-  background-color: rgba(255, 255, 255, 0.05); /* Subtle hover */
-  outline: none;
-}
-
-.faq-question .faq-arrow {
-  font-size: 1rem;
-  transition: transform 0.3s ease-in-out;
-  color: var(--highlight-secondary);
-}
-
-.faq-question[aria-expanded="true"] .faq-arrow {
-  transform: rotate(180deg);
-}
-
-.faq-answer {
-  padding: 0 25px 20px 25px; /* Top padding handled by button, add bottom */
-  color: var(--text-secondary);
-  font-size: 1rem;
-  line-height: 1.7;
-  border-top: 1px solid var(--border-color); /* Separator line */
-  /* CSS transition for smooth opening/closing (optional but nice) */
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease-out, padding-top 0.4s ease-out,
-    padding-bottom 0.4s ease-out;
-}
-
-.faq-answer p {
-  margin-bottom: 0; /* Remove default p margin if any */
-}
-
-/* Style for when answer is visible (JS will handle display:block or similar) */
-/* We'll use max-height for transition */
-.faq-item.open .faq-answer {
-  /* display: block; /* Replaced by max-height for transition */
-  max-height: 500px; /* Adjust if answers are very long */
-  /* padding-top: 20px; /* Added by JS or direct style */
-  /* padding-bottom: 20px; /* Added by JS or direct style */
-}
-
-/* Tutorials Section */
-.tutorials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 30px;
-}
-
-.tutorial-card {
-  background: var(--secondary-bg);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid var(--border-color);
-  display: flex;
-  flex-direction: column;
-}
-
-.tutorial-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(58, 134, 255, 0.2);
-}
-
-.tutorial-card .video-container {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-  height: 0;
-  overflow: hidden;
-}
-
-.tutorial-card .video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-.tutorial-content {
-  padding: 25px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.tutorial-content h3 {
-  color: var(--highlight-secondary);
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-}
-
-.tutorial-content .tutorial-description {
-  font-size: 1rem;
-  margin-bottom: 15px;
-  color: var(--text-secondary);
-  flex-grow: 1;
-}
-
-.tutorial-links a {
-  color: var(--highlight-secondary);
-  text-decoration: none;
-  margin-right: 20px;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.tutorial-links a i {
-  margin-right: 6px;
-}
-
-.tutorial-links a:hover {
-  color: var(--accent-color);
-  text-decoration: underline;
-}
-
-/* Contact Section */
-#contact .contact-intro {
-  text-align: center;
-  font-size: 1.15rem;
-  color: var(--text-secondary);
-  margin-bottom: 40px;
-  max-width: 750px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.contact-methods {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-  margin-bottom: 40px;
-}
-
-.contact-method {
-  background: var(--secondary-bg);
-  padding: 25px 30px;
-  border-radius: 10px;
-  text-align: center;
-  min-width: 220px;
-  border: 1px solid var(--border-color);
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.contact-method:hover {
-  background-color: #233456;
-  transform: translateY(-5px);
-}
-
-.contact-method i {
-  font-size: 2.2rem;
-  color: var(--accent-color);
-  margin-bottom: 15px;
-}
-
-.contact-method a {
-  color: var(--text-primary);
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 500;
-  display: block;
-}
-
-.contact-method a:hover {
-  color: var(--highlight-secondary);
-}
-
-/* Call to Action Button Styling (General) */
-.cta-button {
-  display: inline-block;
-  background: var(--accent-color);
-  color: #fff;
-  padding: 14px 35px;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease,
-    box-shadow 0.3s ease;
-  border: 2px solid var(--accent-color);
-  box-shadow: 0 4px 15px rgba(58, 134, 255, 0.3);
-}
-
-.cta-button:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
-  color: #fff;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 166, 251, 0.4);
-}
-
-.center-cta {
-  text-align: center;
-  margin-top: 40px;
-}
-
-.secondary-cta {
-  background: transparent;
-  border: 2px solid var(--highlight-secondary);
-  color: var(--highlight-secondary);
-}
-.secondary-cta i {
-  margin-right: 8px;
-}
-
-.secondary-cta:hover {
-  background: var(--highlight-secondary);
-  color: var(--primary-bg);
-  border-color: var(--highlight-secondary);
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 40px 20px;
-  background: var(--secondary-bg);
-  color: var(--text-secondary);
-  margin-top: 30px;
-  border-top: 3px solid var(--accent-color);
-}
-
-footer p {
-  margin-bottom: 10px;
-  font-size: 1rem;
-}
-
-.social-links-footer a {
-  color: var(--text-secondary);
-  margin: 0 12px;
-  font-size: 1.8rem;
-  transition: color 0.3s ease, transform 0.3s ease;
-  display: inline-block;
-}
-
-.social-links-footer a:hover {
-  color: var(--highlight-secondary);
-  transform: translateY(-3px);
-}
-
-/* WhatsApp Fixed Button */
-@keyframes pulseWhatsApp {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-  }
-  50% {
-    transform: scale(1.08);
-    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-  }
-}
-
-.whatsapp-fab {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background-color: #25d366;
-  color: white;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  z-index: 1001;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  animation: pulseWhatsApp 2.5s infinite ease-in-out;
-}
-
-.whatsapp-fab:hover {
-  background-color: #1dae54;
-  transform: scale(1.1);
-  animation-play-state: paused;
-}
-
-/* Certificate Modal Styles */
-.certificate-image-clickable {
-  cursor: pointer;
-}
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 2000;
-  padding-top: 50px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.9);
-}
-.modal-content {
-  margin: auto;
-  display: block;
-  width: 90%;
-  max-width: 800px;
-  max-height: 85vh;
-  object-fit: contain;
-  animation-name: zoomModal;
-  animation-duration: 0.5s;
-}
-#caption {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
-  color: #ccc;
-  padding: 10px 0;
-  height: 5vh;
-}
-
-.close-modal-btn {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  transition: 0.3s;
-  cursor: pointer;
-}
-.close-modal-btn:hover,
-.close-modal-btn:focus {
-  color: #bbb;
-  text-decoration: none;
-}
-@keyframes zoomModal {
-  from {
-    transform: scale(0.1);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  /* Adjusted breakpoint for nav items */
-  header nav ul li {
-    margin-left: 15px;
-  }
-  header nav ul li a {
-    font-size: 14px;
-  }
-  .custom-language-switcher {
-    margin-left: 20px;
-  }
-}
-
-@media (max-width: 992px) {
-  .hero-flex-container {
-    flex-direction: column-reverse;
-    text-align: center;
-  }
-  .hero-buttons {
-    justify-content: center;
-  }
-
-  #hero .profile-photo {
-    margin: 0 auto 30px auto;
-    max-width: 250px;
-  }
-
-  #hero h1 {
-    font-size: 2.8rem;
-  }
-
-  #hero .subtitle {
-    font-size: 1.4rem;
-  }
-
-  #hero .greeting {
-    font-size: 1.3rem;
-  }
-
-  .profile-photo {
-    max-width: 200px;
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .projects-grid,
-  .certificates-grid,
-  .services-grid,
-  .tutorials-grid {
-    /* Added services-grid and tutorials-grid */
-    grid-template-columns: 1fr;
-  }
-
-  .project-card .project-image-container {
-    height: 200px;
-  }
-
-  .review-video-container iframe {
-    height: 320px;
-  }
-  .fiverr-reviews-slider {
-    max-width: 95%;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    width: 95%;
-  }
-
-  header #branding h1 {
-    font-size: 22px;
-  }
-
-  #hero h1 {
-    font-size: 2.4rem;
-  }
-
-  #hero .subtitle {
-    font-size: 1.2rem;
-  }
-
-  #hero .greeting {
-    font-size: 1.3rem;
-  }
-
-  .profile-photo {
-    max-width: 200px;
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .projects-grid,
-  .certificates-grid,
-  .services-grid,
-  .tutorials-grid {
-    /* Added services-grid and tutorials-grid */
-    grid-template-columns: 1fr;
-  }
-
-  .project-card .project-image-container {
-    height: 200px;
-  }
-
-  .review-video-container iframe {
-    height: 250px;
-  }
-  .modal-content {
-    width: 95%;
-  }
-  .slider-controls button {
-    padding: 8px 12px;
-    font-size: 0.9rem;
-  }
-  .fiverr-review-slide .review-text-fiverr {
-    font-size: 0.95rem;
-  }
-  .hero-cta {
-    padding: 10px 25px;
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  #hero h1 {
-    font-size: 2rem;
-  }
-  .hero-buttons .hero-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    margin-bottom: 10px;
-  }
-  .hero-buttons .hero-cta:last-child {
-    margin-bottom: 0;
-  }
-
-  #hero .subtitle {
-    font-size: 1.1rem;
-  }
-
-  .cta-button {
-    font-size: 1rem;
-    padding: 12px 25px;
-  }
-
-  .whatsapp-fab {
-    width: 50px;
-    height: 50px;
-    font-size: 1.6rem;
-    bottom: 20px;
-    right: 20px;
-  }
-  .contact-method {
-    min-width: 100%;
-  }
-  header #branding h1 {
-    font-size: 20px;
-  }
-  .custom-language-switcher {
-    min-width: 120px;
-  }
-  .selected-lang-display {
-    padding: 5px 8px;
-  }
-  .selected-lang-text,
-  .lang-options-list li {
-    font-size: 0.85rem;
-  }
-  .service-card h3 {
-    font-size: 1.4rem;
-  }
-  .service-card i.service-icon {
-    font-size: 3rem;
-    width: 70px;
-    height: 70px;
-    line-height: 50px;
-  }
-}
-
-/* FAQ Section Styles */
-#faq .faq-accordion {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.faq-item {
-  background: var(--secondary-bg);
-  margin-bottom: 10px;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  overflow: hidden; /* Ensures answer doesn't overflow rounded corners */
-}
-
-.faq-question {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 18px 25px;
-  background: transparent; /* Inherit from faq-item */
-  border: none;
-  color: var(--text-primary);
-  font-size: 1.15rem;
-  font-weight: 600;
-  text-align: left;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    padding: 18px 25px;
+    background: transparent; /* Inherit from faq-item */
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .faq-question:hover,
 .faq-question:focus {
-  background-color: rgba(255, 255, 255, 0.05); /* Subtle hover */
-  outline: none;
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle hover */
+    outline: none;
 }
 
 .faq-question .faq-arrow {
-  font-size: 1rem;
-  transition: transform 0.3s ease-in-out;
-  color: var(--highlight-secondary);
+    font-size: 1rem;
+    transition: transform 0.3s ease-in-out;
+    color: var(--highlight-secondary);
 }
 
 .faq-question[aria-expanded="true"] .faq-arrow {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 .faq-answer {
-  padding: 0 25px 20px 25px; /* Top padding handled by button, add bottom */
-  color: var(--text-secondary);
-  font-size: 1rem;
-  line-height: 1.7;
-  border-top: 1px solid var(--border-color); /* Separator line */
-  /* CSS transition for smooth opening/closing (optional but nice) */
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease-out, padding-top 0.4s ease-out,
-    padding-bottom 0.4s ease-out;
+    padding: 0 25px 20px 25px; /* Top padding handled by button, add bottom */
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+    border-top: 1px solid var(--border-color); /* Separator line */
+    /* CSS transition for smooth opening/closing (optional but nice) */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding-top 0.4s ease-out, padding-bottom 0.4s ease-out;
 }
 
 .faq-answer p {
-  margin-bottom: 0; /* Remove default p margin if any */
+    margin-bottom: 0; /* Remove default p margin if any */
 }
 
 /* Style for when answer is visible (JS will handle display:block or similar) */
 /* We'll use max-height for transition */
 .faq-item.open .faq-answer {
-  /* display: block; /* Replaced by max-height for transition */
-  max-height: 500px; /* Adjust if answers are very long */
-  /* padding-top: 20px; /* Added by JS or direct style */
-  /* padding-bottom: 20px; /* Added by JS or direct style */
+    /* display: block; /* Replaced by max-height for transition */
+    max-height: 500px; /* Adjust if answers are very long */
+    /* padding-top: 20px; /* Added by JS or direct style */
+    /* padding-bottom: 20px; /* Added by JS or direct style */
 }
