@@ -1360,3 +1360,95 @@ footer p {
     /* padding-top: 20px; /* Added by JS or direct style */
     /* padding-bottom: 20px; /* Added by JS or direct style */
 }
+
+
+/* New Css for image frame  */
+
+  .hero-photo-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .profile-photo:hover {
+      transform: scale(1.05);
+    }
+
+    /* Animated Ring */
+    .ring {
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 255, 255, 0.7);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: pulse 3s infinite alternate;
+      z-index: 1;
+    }
+
+    .ring:nth-child(2) {
+      animation-delay: 0.5s;
+      border-width: 3px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.9);
+    }
+
+    .ring:nth-child(3) {
+      animation-delay: 1s;
+      border-width: 2px;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+    }
+
+    /* Icons */
+    .icon {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      color: #00ffff;
+      opacity: 0.7;
+      filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.6));
+      animation: float 6s infinite ease-in-out;
+      z-index: 2;
+    }
+
+    .icon:nth-child(4) { top: 30%; left: -5%; animation-delay: 0s; }
+    .icon:nth-child(5) { top: 35%; right: -5%; animation-delay: 1s; }
+    .icon:nth-child(6) { bottom: 30%; left: -5%; animation-delay: 2s; }
+    .icon:nth-child(7) { top: -2%; right: 34%; animation-delay: 3s; }
+    .icon:nth-child(8) { bottom: 15%; right: 3%; animation-delay: 4s; }
+    .icon:nth-child(9) { bottom: 75%; right: 90%; animation-delay: 4s; }
+    .icon:nth-child(10) { bottom: -6%; right: 45%; animation-delay: 4s; }
+
+    @keyframes pulse {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1.1);
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.9);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-10px) rotate(180deg);
+      }
+    }

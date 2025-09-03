@@ -644,3 +644,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // --- End FAQ Accordion Logic ---
 });
+
+
+    // Randomize icon positions and opacity slightly
+    document.querySelectorAll('.icon').forEach((icon, index) => {
+      const x = Math.random() * 20 - 10;
+      const y = Math.random() * 20 - 10;
+      icon.style.transform = `translate(${x}px, ${y}px)`;
+      icon.style.opacity = Math.random() * 0.5 + 0.5;
+    });
