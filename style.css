@@ -279,8 +279,8 @@ html{scroll-behavior:auto}
 .r1{--s:calc(var(--o)*.72);--t:28s}
 .r2{--s:calc(var(--o)*.99);--t:46s;animation-direction:reverse}
 @keyframes rot{to{transform:rotate(360deg)}}
-.b{position:absolute;left:50%;top:50%;width:0;height:0;transform:rotate(var(--a)) translateX(calc(var(--s)/2)) rotate(calc(var(--a)*-1))}
-.in{position:absolute;left:0;top:0;transform:translate(-50%,-50%)}
+.ob{position:absolute;left:50%;top:50%;width:0;height:0;transform:rotate(var(--a)) translateX(calc(var(--s)/2)) rotate(calc(var(--a)*-1))}
+.oi{position:absolute;left:0;top:0;transform:translate(-50%,-50%)}
 .cnt{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 6px;border-radius:999px;background:rgba(18,23,36,.92);border:1px solid var(--line);box-shadow:0 10px 28px rgba(0,0,0,.5);font:600 .82rem var(--b);color:#e6e9f0;white-space:nowrap;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .cnt i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:800 .66rem var(--d);font-style:normal}
 .r1 .cnt{animation:rot 28s linear infinite reverse}
@@ -294,3 +294,5 @@ html{scroll-behavior:auto}
 .cnt{font-size:.72rem;padding:5px 11px 5px 5px;gap:6px}
 .cnt i{width:22px;height:22px;font-size:.6rem}
 }
+
+.hero,.ph{overflow:hidden}
